@@ -6,6 +6,7 @@ for(i=0;i<document.querySelectorAll(".drum").length;i++){
         document.querySelectorAll(".drum")[i].addEventListener("click",function (){
             var id = (this.innerHTML);
             makeSound(id);
+            animate(id);
             
        
         });
@@ -61,6 +62,18 @@ function makeSound(key) {
 document.addEventListener("keydown",function (event) {
 
     var id = event.key;
+    animate(id);
     makeSound(id);
     
 })
+
+
+
+
+function animate(currentkey) {
+    document.querySelector("."+currentkey).classList.add("pressed");
+    setTimeout(function(){
+        document.querySelector("."+currentkey).classList.remove("pressed");
+    },100)
+    
+}
